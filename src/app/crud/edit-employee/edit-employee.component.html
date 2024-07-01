@@ -1,0 +1,65 @@
+<div class="mt-20">
+    <span class="content-center">
+        <button mat-raised-button color="primary" (click)="goHome()">Go To Home</button>
+    </span>
+</div>
+<div class="mat-elevation-z8 alert">
+    <form [formGroup]="editform" (ngSubmit)="updateEmployee()" class="alert">
+        <mat-form-field class="demo-full-width">
+            <input formControlName="firstName" matInput placeholder="First Name">
+        </mat-form-field>
+        <mat-error>
+            <!-- <span *ngIf="!frmGroup.get('firstname').valid && frmGroup.get('firstname').touched">Please enter last name</span> -->
+            <span
+                *ngIf="(editform.controls['firstName'].touched || editform.controls['firstName'].dirty) && editform.controls['firstName'].errors"
+                class="text-danger">
+                <span *ngIf="editform.controls['firstName'].errors['required']">Please enter first name.</span>
+                <!-- <span *ngIf="editform.controls['firstName'].errors['pattern']">Name must contain atleast 4 characters & only contain letters.</span> -->
+            </span>
+        </mat-error>
+
+        <mat-form-field class="demo-full-width">
+            <input formControlName="lastName" matInput placeholder="Last Name">
+        </mat-form-field>
+        <mat-error>
+            <!-- <span *ngIf="!frmGroup.get('lastName').valid && frmGroup.get('lastName').touched">Please enter last name</span> -->
+            <span
+                *ngIf="(editform.controls['lastName'].touched || editform.controls['lastName'].dirty) && editform.controls['lastName'].errors"
+                class="text-danger">
+                <span *ngIf="editform.controls['lastName'].errors['required']">Please enter last name.</span>
+                <!-- <span *ngIf="editform.controls['lastName'].errors['pattern']">Name must contain atleast 4 characters & only contain letters.</span> -->
+            </span>
+        </mat-error>
+
+        <mat-form-field class="demo-full-width">
+            <input formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-error>
+            <!-- <span *ngIf="!frmGroup.get('email').valid && frmGroup.get('email').touched">Please enter email</span> -->
+            <span
+                *ngIf="(editform.controls['email'].touched || editform.controls['email'].dirty) && editform.controls['email'].errors"
+                class="text-danger">
+                <span *ngIf="editform.controls['email'].errors['required']">Please enter email.</span>
+                <span *ngIf="editform.controls['email'].errors['email']">Invalid email address.</span>
+            </span>
+        </mat-error>
+
+        <mat-form-field class="demo-full-width">
+            <input formControlName="phone" matInput placeholder="Contact No">
+        </mat-form-field>
+        <mat-error>
+            <!-- <span *ngIf="!frmGroup.get('phone').valid && frmGroup.get('phone').touched">Please enter contact no</span> -->
+            <span
+                *ngIf="(editform.controls['phone'].touched || editform.controls['phone'].dirty) && editform.controls['phone'].errors"
+                class="text-danger">
+                <span *ngIf="editform.controls['phone'].errors['required']">Please enter contact no.</span>
+                <!-- <span *ngIf="editform.controls['phone'].errors['phone']">Invalid email address.</span> -->
+            </span>
+        </mat-error>
+        <div>
+            <span class="content-center">
+                <button mat-raised-button color="accent" [disabled]="editform.invalid">Submit</button>
+            </span>
+        </div>
+    </form>
+</div>
